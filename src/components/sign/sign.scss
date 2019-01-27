@@ -1,0 +1,30 @@
+body {
+  background: #eee;
+  div.form {
+    padding: 40px;
+    border: solid 0.5px #adb9c1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    .formRow {
+      margin: 10px 0;
+    }
+    h2,
+    p {
+      text-align: center;
+    }
+    input,
+    button {
+      padding: 13px 20px;
+      font-size: 14px;
+    }
+    input {
+      width: 228px;
+    }
+    button {
+      width: 100%;
+    }
+  }
+}

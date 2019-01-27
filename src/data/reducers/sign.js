@@ -1,6 +1,6 @@
 function signReducer(
   state = {
-    signState: 0
+    signState: 1
   },
   action
 ) {

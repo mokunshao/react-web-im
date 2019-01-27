@@ -1,18 +1,25 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Provider, connect } from "react-redux";
+import { connect } from "react-redux";
+import SignUp from "./components/sign/SignUp";
 
-@connect(state => ({
-  signState: state.sign.signState
-}))
 class App extends Component {
   render() {
     return (
-      <Provider>
-        <div className="App">nothing </div>
-      </Provider>
+      <div className="App">
+        <SignUp />
+      </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { signState: state.sign.signState };
+};
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

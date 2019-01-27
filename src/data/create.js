@@ -1,12 +1,17 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import signReducer from "./reducers/sign";
+import ReduxThunk from "redux-thunk";
 
-const reducers = {
+const _reducers = {
   sign: signReducer
 };
 
-const middleware = [];
+const reducers = combineReducers(_reducers);
 
-let finalCreateStore=applyMiddleware(...middlewares)(createStore)
+const middleware = [ReduxThunk];
 
-export default finalCreateStore(reducers)
+let finalCreateStore = applyMiddleware(...middleware)(createStore);
+
+const store = finalCreateStore(reducers);
+
+export default store;

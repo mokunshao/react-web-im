@@ -26,7 +26,6 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -37,5 +36,25 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="webim.config.js"></script>
+    <script src="strophe-1.2.8.min.js"></script>
+    <script src="websdk-1.4.13.js"></script>
+    <script>
+      var conn = new WebIM.connection({
+        isMultiLoginSessions: WebIM.config.isMultiLoginSessions,
+        https:
+          typeof WebIM.config.https === "boolean"
+            ? WebIM.config.https
+            : location.protocol === "https:",
+        url: WebIM.config.xmppURL,
+        heartBeatWait: WebIM.config.heartBeatWait,
+        autoReconnectNumMax: WebIM.config.autoReconnectNumMax,
+        autoReconnectInterval: WebIM.config.autoReconnectInterval,
+        apiUrl: WebIM.config.apiURL,
+        isAutoLogin: true
+      });
+    </script>
+    <div id="root"></div>
+
   </body>
 </html>
