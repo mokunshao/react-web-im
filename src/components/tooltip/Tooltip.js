@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from "react-dom";
 import "./Tooltip.scss";
 
 class Tooltip extends Component {
@@ -8,7 +9,7 @@ class Tooltip extends Component {
   static defaultProps = {
     time: 3000, // 三秒后消失
     type: "success",
-    content: "dd"
+    content: "默认消息"
   };
   render() {
     return (
@@ -19,12 +20,29 @@ class Tooltip extends Component {
   }
 }
 
-let d;
+let d, timer;
 
-function show(params) {
+function show(props) {
+  if (d) {
+    close();
+  }
+  if (timer) {
+    clearTimeout(timer);
+  }
   d = document.createElement("div");
-  document.body.appendChild(d)
-    
+  document.body.appendChild(d);
+  ReactDOM.render(<Tooltip {...props} />, d);
+  timer = setTimeout(() => {
+    close();
+  }, props.time || 3000);
 }
 
-export default Tooltip;
+function close() {
+  if (d) {
+    ReactDOM.unmountComponentAtNode(d);
+    d.parentNode.removeChild(d);
+    d = null;
+  }
+}
+
+export default { show: show, close: close };

@@ -17,6 +17,7 @@ class Reg extends Component {
     if (!username || !password || !nickname) {
       return false;
     }
+    // 出现loading
     this.setState({
       showLoading: true
     });
@@ -30,13 +31,13 @@ class Reg extends Component {
         this.setState({
           showLoading: false
         });
-        console.log("chenggong");
+        {Tooltip.show({content:'注册成功',type: "success"})}
       },
       error: () => {
         this.setState({
           showLoading: false
         });
-        console.log("shibai");
+        {Tooltip.show({content:'注册失败',type: "error"})}
       }
     };
     conn.registerUser(options);
@@ -69,7 +70,6 @@ class Reg extends Component {
           </p>
         </div>
         {this.state.showLoading ? <Loading /> : null}
-        <Tooltip />
       </div>
     );
   }
