@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "./sign.scss";
 import { connect } from "react-redux";
 import Tooltip from "../tooltip/Tooltip";
+// import { signUping, signUpSuccess, signUpError } from "@data/actions/sign";
+import { signUping, signUpSuccess, signUpError } from "../../data/actions/sign";
+// import store from "../../data/createStore";
+
 
 class SignUp extends Component {
   // constructor(props) {
@@ -97,15 +101,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signUping: () => {
-      dispatch({ type: "reg_state_change", payload: { statusCode: 1 } });
-    },
-    signUpSuccess: () => {
-      dispatch({ type: "reg_state_change", payload: { statusCode: 2 } });
-    },
-    signUpError: () => {
-      dispatch({ type: "reg_state_change", payload: { statusCode: 3 } });
-    }
+    signUping: signUping,
+    signUpSuccess: signUpSuccess,
+    signUpError: signUpError
   };
 };
 
