@@ -3,9 +3,6 @@ import ReactDOM from "react-dom";
 import "./Tooltip.scss";
 
 class Tooltip extends Component {
-  state = {
-    me: 1233
-  };
   static defaultProps = {
     time: 3000, // 三秒后消失
     type: "success",
@@ -14,34 +11,34 @@ class Tooltip extends Component {
   render() {
     return (
       <div className="tooltip">
-        <span>{this.props.content}</span>
+        <span className={this.props.type}>{this.props.content}</span>
       </div>
     );
   }
 }
 
-let d, timer;
+let newDiv, timer;
 
 function show(props) {
-  if (d) {
+  if (newDiv) {
     close();
   }
   if (timer) {
     clearTimeout(timer);
   }
-  d = document.createElement("div");
-  document.body.appendChild(d);
-  ReactDOM.render(<Tooltip {...props} />, d);
+  newDiv = document.createElement("div");
+  document.body.appendChild(newDiv);
+  ReactDOM.render(<Tooltip {...props} />, newDiv);
   timer = setTimeout(() => {
     close();
   }, props.time || 3000);
 }
 
 function close() {
-  if (d) {
-    ReactDOM.unmountComponentAtNode(d);
-    d.parentNode.removeChild(d);
-    d = null;
+  if (newDiv) {
+    ReactDOM.unmountComponentAtNode(newDiv);
+    newDiv.parentNode.removeChild(newDiv);
+    newDiv = null;
   }
 }
 

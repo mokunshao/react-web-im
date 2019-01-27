@@ -1,3 +1,5 @@
+import { REG_STATE_CHANGE } from "../actions/actionTypes";
+
 function signReducer(
   state = {
     signUpState: 0,
@@ -6,9 +8,9 @@ function signReducer(
   action
 ) {
   switch (action.type) {
-    case "SIGNUp_START":
+    case REG_STATE_CHANGE:
       return Object.assign({}, state, {
-        signUpState: action.playload.state
+        signUpState: action.payload.statusCode
       });
     default:
       return state;

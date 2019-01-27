@@ -1,7 +1,12 @@
 .tooltip {
   text-align: center;
   span {
-    background: lightblue;
     padding: 5px;
+    &.success {
+      background: lightgreen;
+    }
+    &.error{
+      background: lightcoral;
+    }
   }
 }
