@@ -1,23 +1,22 @@
 import React, { Component } from "react";
 import "./sign.scss";
-import { loadavg } from "os";
+import { connect } from "react-redux";
+import Tooltip from "../tooltip/Tooltip";
 
-class SignUp extends Component {
+class Reg extends Component {
   constructor(props) {
     super(props);
     this.state = {
       showLoading: false
     };
   }
-
-  SignUp = () => {
+  Reg = () => {
     let username = this.refs.username.value;
     let password = this.refs.password.value;
     let nickname = this.refs.nickname.value;
     if (!username || !password || !nickname) {
       return false;
     }
-    // 出现loading
     this.setState({
       showLoading: true
     });
@@ -62,7 +61,7 @@ class SignUp extends Component {
             <input ref="nickname" type="text" placeholder="昵称" />
           </div>
           <div className="formRow">
-            <button onClick={this.SignUp}>注册</button>
+            <button onClick={this.Reg}>注册</button>
           </div>
           <p>
             已有账户
@@ -70,6 +69,7 @@ class SignUp extends Component {
           </p>
         </div>
         {this.state.showLoading ? <Loading /> : null}
+        <Tooltip />
       </div>
     );
   }
@@ -81,11 +81,25 @@ class Loading extends Component {
   }
 }
 
-class tooltip extends Component {
-  state = {};
-  render() {
-    return <div>tooltip</div>;
-  }
-}
+const mapStateToProps = state => {
+  return {};
+};
 
-export default SignUp;
+const mapDispatchToProps = dispatch => {
+  return {
+    one: () => {
+      dispatch({ type: "REG_STATE_CHANGE", payload: 2 });
+    },
+    two: () => {
+      dispatch({ type: "REG_STATE_CHANGE", payload: 3 });
+    },
+    three: () => {
+      dispatch({ type: "REG_STATE_CHANGE", payload: 1 });
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Reg);

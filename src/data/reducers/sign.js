@@ -1,13 +1,14 @@
 function signReducer(
   state = {
-    signState: 1
+    signUpState: 0,
+    signInState: 0
   },
   action
 ) {
   switch (action.type) {
-    case "LOGIN_START":
+    case "SIGNUp_START":
       return Object.assign({}, state, {
-        signState: action.playload.state
+        signUpState: action.playload.state
       });
     default:
       return state;

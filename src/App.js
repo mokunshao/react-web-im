@@ -14,7 +14,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return { signState: state.sign.signState };
+  return { signUpState: state.sign.signUpState };
 };
 
 const mapDispatchToProps = {};
