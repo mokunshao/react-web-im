@@ -1,73 +1,75 @@
 import React, { Component } from "react";
 import "./sign.scss";
-
-// var conn = new WebIM.connection({
-//   isMultiLoginSessions: WebIM.config.isMultiLoginSessions,
-//   https:
-//     typeof WebIM.config.https === "boolean"
-//       ? WebIM.config.https
-//       : location.protocol === "https:",
-//   url: WebIM.config.xmppURL,
-//   heartBeatWait: WebIM.config.heartBeatWait,
-//   autoReconnectNumMax: WebIM.config.autoReconnectNumMax,
-//   autoReconnectInterval: WebIM.config.autoReconnectInterval,
-//   apiUrl: WebIM.config.apiURL,
-//   isAutoLogin: true
-// });
+import { loadavg } from "os";
 
 class SignUp extends Component {
-  state = {};
-  signUp = () => {
-    let username = this.refs.name.value;
-    let pwd = this.refs.auth.value;
+  constructor(props) {
+    super(props);
+    this.state = {
+      showLoading: false
+    };
+  }
+
+  SignUp = () => {
+    let username = this.refs.username.value;
+    let password = this.refs.password.value;
     let nickname = this.refs.nickname.value;
-    if (!username || !pwd) {
+    if (!username || !password || !nickname) {
       return false;
     }
-    //出现loading
-    // this.setState({
-    //     showLoading: true
-    // });
+    // 出现loading
+    this.setState({
+      showLoading: true
+    });
     let options = {
       username: username.toLowerCase(),
-      password: pwd,
+      password: password,
       nickname: nickname,
-      // appKey: WebIM.config.appkey,
-      // apiUrl: WebIM.config.apiURL,
-      success: function() {
+      appKey: WebIM.config.appkey,
+      apiUrl: WebIM.config.apiURL,
+      success: () => {
+        this.setState({
+          showLoading: false
+        });
         console.log("chenggong");
       },
-      error: function() {
+      error: () => {
+        this.setState({
+          showLoading: false
+        });
         console.log("shibai");
       }
     };
-    // conn.registerUser(options);
+    conn.registerUser(options);
   };
   render() {
     return (
-      <div className="form">
-        <h2>注册</h2>
-        <div className="formRow">
-          <input
-            ref="username"
-            type="text"
-            autoFocus="autofocus"
-            placeholder="用户名"
-          />
+      <div>
+        <div className="form">
+          <h2>注册</h2>
+          <div className="formRow">
+            <input
+              ref="username"
+              type="text"
+              autoFocus="autofocus"
+              placeholder="用户名"
+            />
+          </div>
+          <div className="formRow">
+            <input ref="password" type="password" placeholder="密码" />
+          </div>
+          <div className="formRow">
+            <input ref="nickname" type="text" placeholder="昵称" />
+          </div>
+          <div className="formRow">
+            <button onClick={this.SignUp}>注册</button>
+          </div>
+          <p>
+            已有账户
+            <i>登陆</i>
+          </p>
         </div>
-        <div className="formRow">
-          <input ref="auth" type="password" placeholder="密码" />
-        </div>
-        <div className="formRow">
-          <input ref="nickname" type="text" placeholder="昵称" />
-        </div>
-        <div className="formRow">
-          <button onClick={this.signUp}>注册</button>
-        </div>
-        <p>
-          已有账户
-          <i>登陆</i>
-        </p>
+        {this.state.showLoading ? <Loading /> : null}
       </div>
     );
   }

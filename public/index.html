@@ -26,6 +26,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -40,21 +41,20 @@
     <script src="strophe-1.2.8.min.js"></script>
     <script src="websdk-1.4.13.js"></script>
     <script>
-      var conn = new WebIM.connection({
+      let conn = new WebIM.connection({
         isMultiLoginSessions: WebIM.config.isMultiLoginSessions,
-        https:
-          typeof WebIM.config.https === "boolean"
-            ? WebIM.config.https
-            : location.protocol === "https:",
+        https: false,
         url: WebIM.config.xmppURL,
         heartBeatWait: WebIM.config.heartBeatWait,
         autoReconnectNumMax: WebIM.config.autoReconnectNumMax,
         autoReconnectInterval: WebIM.config.autoReconnectInterval,
         apiUrl: WebIM.config.apiURL,
-        isAutoLogin: true
+        isHttpDNS: WebIM.config.isHttpDNS,
+        isWindowSDK: WebIM.config.isWindowSDK,
+        isAutoLogin: true,
+        encrypt: WebIM.config.encrypt,
+        delivery: WebIM.config.delivery
       });
     </script>
-    <div id="root"></div>
-
   </body>
 </html>
