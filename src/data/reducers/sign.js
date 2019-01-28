@@ -9,9 +9,7 @@ function signReducer(
 ) {
   switch (action.type) {
     case REG_STATE_CHANGE:
-      return Object.assign({}, state, {
-        signUpState: action.payload.statusCode
-      });
+      return { ...state, signUpState: action.payload.signUpState };
     default:
       return state;
   }

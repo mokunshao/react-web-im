@@ -2,13 +2,23 @@ import React, { Component } from "react";
 import "./App.css";
 import { connect } from "react-redux";
 import SignUp from "./components/sign/SignUp";
+import Login from "./components/sign/Login";
+import Chat from './components/chat/Chat'
+import { BrowserRouter as Router, Route} from "react-router-dom";
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <SignUp />
-      </div>
+      <Router>
+        <div className="App">
+          <Route exact path="/" component={Login} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/chat" component={Chat} />
+          <Route path="/chat/:chatType/:chatId" component={Chat} />
+        </div>
+      </Router>
     );
   }
 }

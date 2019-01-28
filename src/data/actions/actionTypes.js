@@ -1,12 +1,16 @@
-export function createActions(actiontype, ...params) {
+export function createAction(actiontype, ...params) {
   return (...args) => {
     let action = { type: actiontype, payload: {} };
     params.forEach((item, index) => {
-      action.payload[params[index]] = args[index];
+      action.payload[item] = args[index];
     });
     return action
   };
 }
+
+// 使用范例
+// createAction('actionTypes','key')('value')
+// createAction('actionTypes','key1','key2')('value1','value2')
 
 export const REG_STATE_CHANGE = "reg_state_change";
 

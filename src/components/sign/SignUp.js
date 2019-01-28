@@ -2,54 +2,33 @@ import React, { Component } from "react";
 import "./sign.scss";
 import { connect } from "react-redux";
 import Tooltip from "../tooltip/Tooltip";
-// import { signUping, signUpSuccess, signUpError } from "@data/actions/sign";
-import { signUping, signUpSuccess, signUpError } from "../../data/actions/sign";
-// import store from "../../data/createStore";
+import { REG_STATE_CHANGE } from '../../data/actions/sign'
+import { Link } from "react-router-dom";
 
 
 class SignUp extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     showLoading: false
-  //   };
-  // }
   SignUp = () => {
-    let username = this.refs.username.value;
-    let password = this.refs.password.value;
-    let nickname = this.refs.nickname.value;
+    let username = this.refs.username.value.trim();
+    let password = this.refs.password.value.trim();
+    let nickname = this.refs.nickname.value.trim();
     if (!username || !password || !nickname) {
+      Tooltip.show({ content: "账号密码昵称不能为空", type: "error" });
       return false;
     }
     this.props.signUping();
-    // this.setState({
-    //   showLoading: true
-    // });
     let options = {
-      username: username.toLowerCase(),
+      username: username,
       password: password,
       nickname: nickname,
       appKey: WebIM.config.appkey,
       apiUrl: WebIM.config.apiURL,
       success: () => {
         this.props.signUpSuccess();
-
-        // this.setState({
-        //   showLoading: false
-        // });
-        {
-          Tooltip.show({ content: "注册成功", type: "success" });
-        }
+        Tooltip.show({ content: "注册成功", type: "success" });
       },
       error: () => {
-        // this.setState({
-        //   showLoading: false
-        // });
         this.props.signUpError();
-
-        {
-          Tooltip.show({ content: "注册失败", type: "error" });
-        }
+        Tooltip.show({ content: "注册失败", type: "error" });
       }
     };
     conn.registerUser(options);
@@ -77,8 +56,8 @@ class SignUp extends Component {
             <button onClick={this.SignUp}>注册</button>
           </div>
           <p>
-            已有账户
-            <i>登陆</i>
+            已有账户？
+            <Link to="/login">登录</Link>
           </p>
         </div>
         {this.props.signUpState === 1 ? <Loading /> : null}
@@ -101,9 +80,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signUping: signUping,
-    signUpSuccess: signUpSuccess,
-    signUpError: signUpError
+    signUping: () => {
+      dispatch({ type: REG_STATE_CHANGE, payload: { signUpState: 1 } });
+    },
+    signUpSuccess: () => {
+      dispatch({ type: REG_STATE_CHANGE, payload: { signUpState: 2 } });
+    },
+    signUpError: () => {
+      dispatch({ type: REG_STATE_CHANGE, payload: { signUpState: 3 } });
+    }
   };
 };
 
