@@ -1,7 +1,6 @@
 .sidebar {
   text-align: center;
   max-width: 70px;
-  height: 600px;
   background: #fcfdfb;
   border-radius: 4px;
   display: flex;
@@ -16,5 +15,6 @@
     width: 40%;
     height: 50px;
     fill: #dbdbdb;
+    cursor: pointer;
   }
 }

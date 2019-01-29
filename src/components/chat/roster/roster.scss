@@ -1,0 +1,12 @@
+.roster {
+  min-width: 200px;
+  border-right: 1px solid #f2f2f2;
+  border-left: 1px solid #f2f2f2;
+  overflow: auto;
+  & > div {
+    cursor: pointer;
+    padding: 10px;
+    color: gray;
+    border-bottom: 1px solid #f2f2f2;
+  }
+}

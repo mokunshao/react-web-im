@@ -7,24 +7,24 @@ class Sidebar extends Component {
       <section className="sidebar">
         <div>
           <div>
-            <svg className="icon" ariaHidden="true">
+            <svg className="icon" aria-hidden="true">
               <use xlinkHref="#icon-avatar" />
             </svg>
           </div>
-          <div className="username">oppo1ddsds</div>
+          <div className="username">Ken</div>
           <div>
-            <svg className="icon" ariaHidden="true">
+            <svg className="icon" aria-hidden="true">
               <use xlinkHref="#icon-chat1" />
             </svg>
           </div>
           <div>
-            <svg className="icon" ariaHidden="true">
+            <svg className="icon" aria-hidden="true">
               <use xlinkHref="#icon-chat2" />
             </svg>
           </div>
         </div>
         <div>
-          <svg className="icon" ariaHidden="true">
+          <svg className="icon" aria-hidden="true">
             <use xlinkHref="#icon-setting" />
           </svg>
         </div>

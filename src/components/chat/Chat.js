@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getToken } from "../../data/token";
 import Sidebar from "./sidebar/Sidebar";
-import Session from "./session/Session";
+import Roster from "./roster/Roster";
 import Panel from "./panel/Panel";
 import "./chat.scss";
 
@@ -17,7 +17,7 @@ class Chat extends Component {
     return (
       <div className="chat">
         <Sidebar />
-        <Session />
+        <Roster />
         <Panel />
       </div>
     );
