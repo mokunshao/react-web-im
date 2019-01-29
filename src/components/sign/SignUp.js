@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./sign.scss";
 import { connect } from "react-redux";
 import Tooltip from "../tooltip/Tooltip";
-import { REG_STATE_CHANGE } from '../../data/actions/sign'
+import { REG_STATE_CHANGE } from '../../data/actions/actionTypes'
 import { Link } from "react-router-dom";
 
 
