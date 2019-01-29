@@ -3,6 +3,7 @@ import "./sign.scss";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import Tooltip from "../tooltip/Tooltip";
+import { setToken } from "../../data/token";
 
 class Login extends Component {
   constructor(props) {
@@ -23,15 +24,14 @@ class Login extends Component {
       user: username,
       pwd: password,
       appKey: WebIM.config.appkey,
-      success: () => {
-        console.log("cg");
+      success: token => {
+        setToken(token);
         Tooltip.show({ content: "登录成功", type: "success" });
         this.setState({
           isLogin: true
         });
       },
       error: () => {
-        console.log("sb");
         Tooltip.show({ content: "登录失败", type: "error" });
       }
     };
