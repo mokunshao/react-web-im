@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./roster.scss";
+import { showDialog } from "../dialog/Dialog";
 
 class Roster extends Component {
   state = {
@@ -8,10 +9,7 @@ class Roster extends Component {
   componentDidMount() {
     conn.listen({
       onOpened: () => {
-        //连接成功回调
-        // 如果isAutoLogin设置为false，那么必须手动设置上线，否则无法收消息
-        // 手动上线指的是调用conn.setPresence(); 如果conn初始化时已将isAutoLogin设置为true
-        // 则无需调用conn.setPresence();
+        console.log("onopen");
         conn.getRoster({
           success: roster => {
             this.setState({
@@ -19,6 +17,21 @@ class Roster extends Component {
             });
           }
         });
+      },
+      // onRoster: () => {
+      //   console.log("onroster");
+      //   conn.getRoster({
+      //     success: roster => {
+      //       this.setState({
+      //         roster
+      //       });
+      //     }
+      //   });
+      // },
+      onPresence: e => {
+        if (e.type === "subscribe") {
+          showDialog({ type: 2 });
+        }
       }
     });
   }

@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import "./sidebar.scss";
+import { showDialog } from "../dialog/Dialog";
 
 class Sidebar extends Component {
+  showSetting = () => {
+    showDialog({ type: 1 });
+  };
   render() {
     return (
       <section className="sidebar">
@@ -23,7 +27,7 @@ class Sidebar extends Component {
             </svg>
           </div>
         </div>
-        <div>
+        <div onClick={this.showSetting}>
           <svg className="icon" aria-hidden="true">
             <use xlinkHref="#icon-setting" />
           </svg>
