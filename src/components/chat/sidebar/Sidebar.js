@@ -28,7 +28,12 @@ class Sidebar extends Component {
             </svg>
           </div>
           <div>
-            <Link to="/login">
+            <Link
+              to="/login"
+              onClick={() => {
+                conn.close();
+              }}
+            >
               <svg className="icon" aria-hidden="true">
                 <use xlinkHref="#icon-quit" />
               </svg>

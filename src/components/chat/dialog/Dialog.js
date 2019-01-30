@@ -14,7 +14,6 @@ class Dialog extends Component {
     if (this.refs.username.value.trim()) {
       conn.subscribe({
         to: this.refs.username.value.trim(),
-        message: "加个好友呗!"
       });
       this.closeDialog();
     } else {
@@ -70,7 +69,7 @@ class Dialog extends Component {
                 关闭
               </span>
               <div className="title">添加好友</div>
-              <div>请求添加好友 </div>
+              <div>{this.props.e.from}请求添加好友。</div>
               <div>
                 <button className="agree" onClick={this.acceptFriend}>
                   接受
