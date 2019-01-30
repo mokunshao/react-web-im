@@ -21,20 +21,20 @@ class Dialog extends Component {
       alert("请输入用户名");
     }
   };
-  acceptFriend = e => {
+  acceptFriend = () => {
     conn.subscribed({
-      to: e.from,
+      to: this.props.e.from,
       message: "[resp:true]"
     });
     conn.subscribe({
-      to: e.from,
+      to: this.props.e.from,
       message: "[resp:true]"
     });
     this.closeDialog();
   };
-  rejectFriend = e => {
+  rejectFriend = () => {
     conn.unsubscribed({
-      to: e.from,
+      to: this.props.e.from,
       message: "rejectAddFriend"
     });
     this.closeDialog();

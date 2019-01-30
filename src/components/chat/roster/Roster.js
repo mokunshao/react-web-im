@@ -8,29 +8,33 @@ class Roster extends Component {
   };
   componentDidMount() {
     conn.listen({
-      onOpened: () => {
-        console.log("onopen");
+      onOpened: e => {
+        console.log(e);
         conn.getRoster({
           success: roster => {
+            console.log(roster);
+            roster = roster.filter(item => {
+              return item.subscription === "both";
+            });
             this.setState({
               roster
             });
           }
         });
       },
-      // onRoster: () => {
-      //   console.log("onroster");
-      //   conn.getRoster({
-      //     success: roster => {
-      //       this.setState({
-      //         roster
-      //       });
-      //     }
-      //   });
-      // },
+      onRoster: roster => {
+        console.log(roster);
+        roster = roster.filter(item => {
+          return item.subscription === "both";
+        });
+        this.setState({
+          roster
+        });
+      },
       onPresence: e => {
+        console.log(e);
         if (e.type === "subscribe") {
-          showDialog({ type: 2 });
+          showDialog({ type: 2, e });
         }
       }
     });
