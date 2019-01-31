@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./roster.scss";
-import { showDialog } from "../dialog/Dialog";
 import { Link } from "react-router-dom";
 
 class Roster extends Component {
