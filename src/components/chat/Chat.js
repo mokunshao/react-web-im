@@ -6,12 +6,9 @@ import Panel from "./panel/Panel";
 import "./chat.scss";
 
 class Chat extends Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props)
-  }
-  
   componentDidMount() {
+    console.log(this.props);
+    
     let token = getToken();
     if (!token) {
       // 项目写好后开启

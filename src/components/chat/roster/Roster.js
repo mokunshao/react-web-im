@@ -1,10 +1,22 @@
 import React, { Component } from "react";
 import "./roster.scss";
 import { showDialog } from "../dialog/Dialog";
+import { Link } from "react-router-dom";
 
 class Roster extends Component {
   state = {
-    roster: []
+    roster: [
+      {
+        jid: "asemoemo#chatdemoui_test1@easemob.com",
+        name: "test1",
+        subscription: "both"
+      },
+      {
+        jid: "asemoemo#chatdemoui_test1@easemob.com",
+        name: "test2",
+        subscription: "both"
+      }
+    ]
   };
   componentDidMount() {
     conn.listen({
@@ -44,7 +56,25 @@ class Roster extends Component {
       <section className="roster">
         {this.state.roster.length
           ? this.state.roster.map(item => {
-              return <div key="item.name">{item.name}</div>;
+              let url = `/chat/${item.name}`;
+              console.log(url);
+              return (
+                <Link to={url}>
+                  <div className="friendItem" key="item.name">
+                    <div>
+                      <svg className="icon" aria-hidden="true">
+                        <use xlinkHref="#icon-avatar" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div>{item.name}</div>
+                      <div className="preview">
+                        preview11111111111111111111111
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              );
             })
           : null}
       </section>
