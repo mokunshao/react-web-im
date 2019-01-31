@@ -11,12 +11,11 @@ class Roster extends Component {
               let url = `/chat/${item.name}`;
               let isSelected = item.name === this.props.friendName;
               return (
-                <Link to={url}>
+                <Link to={url} key={item.name}>
                   <div
                     className={
                       isSelected ? "friendItem selected" : "friendItem"
                     }
-                    key="item.name"
                   >
                     <div>
                       <svg className="icon" aria-hidden="true">
