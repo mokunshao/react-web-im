@@ -4,22 +4,13 @@ import Sidebar from "./sidebar/Sidebar";
 import Roster from "./roster/Roster";
 import Panel from "./panel/Panel";
 import "./chat.scss";
-import {showDialog} from '../chat/dialog/Dialog';
+import { showDialog } from "../chat/dialog/Dialog";
+import { connect } from "react-redux";
+import { SET_ROSTER } from "../../data/actions/actionTypes";
 
 class Chat extends Component {
   state = {
-    roster: [
-      {
-        jid: "asemoemo#chatdemoui_test1@easemob.com",
-        name: "test1",
-        subscription: "both"
-      },
-      {
-        jid: "asemoemo#chatdemoui_test1@easemob.com",
-        name: "test2",
-        subscription: "both"
-      }
-    ]
+    roster: []
   };
   componentDidMount() {
     let token = getToken();
@@ -34,9 +25,7 @@ class Chat extends Component {
             roster = roster.filter(item => {
               return item.subscription === "both";
             });
-            this.setState({
-              roster
-            });
+            this.props.setRoster(roster);
           }
         });
       },
@@ -44,9 +33,7 @@ class Chat extends Component {
         roster = roster.filter(item => {
           return item.subscription === "both";
         });
-        this.setState({
-          roster
-        });
+        this.props.setRoster(roster);
       },
       onPresence: e => {
         if (e.type === "subscribe") {
@@ -59,11 +46,29 @@ class Chat extends Component {
     return (
       <div className="chat">
         <Sidebar />
-        <Roster friendName={this.props.match.params.friendName} roster={this.state.roster}/>
+        <Roster
+          friendName={this.props.match.params.friendName}
+          roster={this.props.roster}
+        />
         <Panel friendName={this.props.match.params.friendName} />
       </div>
     );
   }
 }
 
-export default Chat;
+const mapStateToProps = state => {
+  return { roster: state.session.roster };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setRoster: roster => {
+      dispatch({ type: SET_ROSTER, payload: { roster } });
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Chat);

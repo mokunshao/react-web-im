@@ -1,12 +1,12 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import signReducer from "./reducers/sign";
+import sessionReducer from "./reducers/session";
 import ReduxThunk from "redux-thunk";
 
-const _reducers = {
-  sign: signReducer
-};
-
-const reducers = combineReducers(_reducers);
+const reducers = combineReducers({
+  sign: signReducer,
+  session: sessionReducer
+});
 
 const middleware = [ReduxThunk];
 
