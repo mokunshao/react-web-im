@@ -20,11 +20,9 @@ class Roster extends Component {
   };
   componentDidMount() {
     conn.listen({
-      onOpened: e => {
-        console.log(e);
+      onOpened: () => {
         conn.getRoster({
           success: roster => {
-            console.log(roster);
             roster = roster.filter(item => {
               return item.subscription === "both";
             });
@@ -35,7 +33,6 @@ class Roster extends Component {
         });
       },
       onRoster: roster => {
-        console.log(roster);
         roster = roster.filter(item => {
           return item.subscription === "both";
         });
@@ -44,7 +41,6 @@ class Roster extends Component {
         });
       },
       onPresence: e => {
-        console.log(e);
         if (e.type === "subscribe") {
           showDialog({ type: 2, e });
         }
@@ -57,10 +53,15 @@ class Roster extends Component {
         {this.state.roster.length
           ? this.state.roster.map(item => {
               let url = `/chat/${item.name}`;
-              console.log(url);
+              let isSelected = item.name === this.props.friendName;
               return (
                 <Link to={url}>
-                  <div className="friendItem" key="item.name">
+                  <div
+                    className={
+                      isSelected ? "friendItem selected" : "friendItem"
+                    }
+                    key="item.name"
+                  >
                     <div>
                       <svg className="icon" aria-hidden="true">
                         <use xlinkHref="#icon-avatar" />

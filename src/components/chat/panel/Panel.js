@@ -5,7 +5,7 @@ class Panel extends Component {
   render() {
     return (
       <section className="panel">
-        <div>会话窗口</div>
+        <div>{this.props.friendName}</div>
       </section>
     );
   }

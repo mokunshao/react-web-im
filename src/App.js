@@ -14,8 +14,7 @@ class App extends Component {
           <Route exact path="/" component={Login} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
-          <Route exact path="/chat" component={Chat} />
-          <Route exact path="/chat/:chatId" component={Chat} />
+          <Route path={["/chat/:friendName", "/chat/"]} component={Chat} />
         </div>
       </Router>
     );

@@ -7,8 +7,6 @@ import "./chat.scss";
 
 class Chat extends Component {
   componentDidMount() {
-    console.log(this.props);
-    
     let token = getToken();
     if (!token) {
       // 项目写好后开启
@@ -19,8 +17,8 @@ class Chat extends Component {
     return (
       <div className="chat">
         <Sidebar />
-        <Roster />
-        <Panel />
+        <Roster friendName={this.props.match.params.friendName} />
+        <Panel friendName={this.props.match.params.friendName} />
       </div>
     );
   }
