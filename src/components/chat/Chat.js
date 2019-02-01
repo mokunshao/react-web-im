@@ -6,7 +6,10 @@ import Panel from "./panel/Panel";
 import "./chat.scss";
 import { showDialog } from "../chat/dialog/Dialog";
 import { connect } from "react-redux";
-import { SET_ROSTER } from "../../data/actions/actionTypes";
+import {
+  SET_ROSTER,
+  SET_CURRENT_SESSION
+} from "../../data/actions/actionTypes";
 
 class Chat extends Component {
   state = {
@@ -43,26 +46,34 @@ class Chat extends Component {
     });
   }
   render() {
+    this.props.setCurrentSession(this.props.match.params.friendName);
     return (
       <div className="chat">
         <Sidebar />
-        <Roster
-          friendName={this.props.match.params.friendName}
-        />
-        <Panel friendName={this.props.match.params.friendName} />
+        <Roster />
+        <Panel />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { roster: state.session.roster };
+  return {
+    roster: state.session.roster,
+    currentSession: state.session.currentSession
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setRoster: roster => {
       dispatch({ type: SET_ROSTER, payload: { roster } });
+    },
+    setCurrentSession: currentSession => {
+      dispatch({
+        type: SET_CURRENT_SESSION,
+        payload: { currentSession }
+      });
     }
   };
 };

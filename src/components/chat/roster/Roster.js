@@ -11,8 +11,7 @@ class Roster extends Component {
         {this.props.roster.length
           ? this.props.roster.map(item => {
               let url = `/chat/${item.name}`;
-              let isSelected = item.name === this.props.friendName;
-              // let isSelected = item.name === this.props.currentSession;
+              let isSelected = item.name === this.props.currentSession;
               return (
                 <Link
                   to={url}
@@ -56,10 +55,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCurrentSession: e => {
+    setCurrentSession: currentSession => {
       dispatch({
         type: SET_CURRENT_SESSION,
-        payload: { currentSession: e }
+        payload: { currentSession }
       });
     }
   };

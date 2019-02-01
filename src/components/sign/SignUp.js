@@ -37,7 +37,7 @@ class SignUp extends Component {
     return (
       <div>
         <div className="form">
-          <h2>注册{this.props.signUpState}</h2>
+          <h2>注册</h2>
           <div className="formRow">
             <input
               ref="username"

@@ -2,8 +2,7 @@ import { REG_STATE_CHANGE } from "../actions/actionTypes";
 
 function signReducer(
   state = {
-    signUpState: 0,
-    signInState: 0
+    signUpState: 0
   },
   action
 ) {
