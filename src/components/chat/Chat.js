@@ -12,9 +12,6 @@ import {
 } from "../../data/actions/actionTypes";
 
 class Chat extends Component {
-  state = {
-    roster: []
-  };
   componentDidMount() {
     let token = getToken();
     if (!token) {
@@ -44,13 +41,20 @@ class Chat extends Component {
         }
       }
     });
+    this.props.setCurrentSession(this.props.match.params.friendName);
+  }
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.match.params.friendName !== this.props.match.params.friendName
+    ) {
+      this.props.setCurrentSession(this.props.match.params.friendName);
+    }
   }
   render() {
-    this.props.setCurrentSession(this.props.match.params.friendName);
     return (
       <div className="chat">
         <Sidebar />
-        <Roster />
+        <Roster key={this.props.match.params.friendName} />
         <Panel />
       </div>
     );
