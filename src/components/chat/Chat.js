@@ -48,7 +48,6 @@ class Chat extends Component {
         <Sidebar />
         <Roster
           friendName={this.props.match.params.friendName}
-          roster={this.props.roster}
         />
         <Panel friendName={this.props.match.params.friendName} />
       </div>

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./roster.scss";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { SET_CURRENT_SESSION } from "../../../data/actions/actionTypes";
 
 class Roster extends Component {
   render() {
@@ -10,8 +12,15 @@ class Roster extends Component {
           ? this.props.roster.map(item => {
               let url = `/chat/${item.name}`;
               let isSelected = item.name === this.props.friendName;
+              // let isSelected = item.name === this.props.currentSession;
               return (
-                <Link to={url} key={item.name}>
+                <Link
+                  to={url}
+                  key={item.name}
+                  onClick={() => {
+                    this.props.setCurrentSession(item.name);
+                  }}
+                >
                   <div
                     className={
                       isSelected ? "friendItem selected" : "friendItem"
@@ -38,4 +47,25 @@ class Roster extends Component {
   }
 }
 
-export default Roster;
+const mapStateToProps = state => {
+  return {
+    currentSession: state.session.currentSession,
+    roster: state.session.roster
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentSession: e => {
+      dispatch({
+        type: SET_CURRENT_SESSION,
+        payload: { currentSession: e }
+      });
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Roster);
