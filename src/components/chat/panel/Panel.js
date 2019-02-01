@@ -1,8 +1,30 @@
 import React, { Component } from "react";
 import "./panel.scss";
 import { connect } from "react-redux";
-
+import Tooltip from "../../tooltip/Tooltip";
 class Panel extends Component {
+  sendMessage = () => {
+    let id = conn.getUniqueId();
+    let msg = new WebIM.message("txt", id);
+    msg.set({
+      msg: this.refs.inputMessage.value.trim(),
+      to: this.props.currentSession,
+      roomType: false,
+      success: () => {
+        this.refs.inputMessage.value = "";
+      },
+      fail: () => {
+        Tooltip.show({ content: "消息发送失败" });
+      }
+    });
+    msg.body.chatType = "singleChat";
+    conn.send(msg.body);
+  };
+  sendMessage2 = e => {
+    if (e.keyCode === 13) {
+      this.sendMessage();
+    }
+  };
   render() {
     let content = <section className="panel" />;
     this.props.roster.map(item => {
@@ -12,8 +34,12 @@ class Panel extends Component {
             <div className="currentSession">{this.props.currentSession}</div>
             <div className="messageList" />
             <div className="messageSender">
-              <textarea placeholder="请输入消息" />
-              <button>发送</button>
+              <textarea
+                placeholder="请输入消息"
+                ref="inputMessage"
+                onKeyUp={this.sendMessage2}
+              />
+              <button onClick={this.sendMessage}>发送</button>
             </div>
           </section>
         );
