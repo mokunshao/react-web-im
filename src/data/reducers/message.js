@@ -7,6 +7,11 @@ function messageReducer(
         { id: 1, from: "test1", to: "myname", data: "111" },
         { id: 2, from: "test1", to: "myname", data: "222" },
         { id: 3, from: "test1", to: "myname", data: "333" }
+      ],
+      test2: [
+        { id: 1, from: "test1", to: "myname", data: "111" },
+        { id: 2, from: "test1", to: "myname", data: "222" },
+        { id: 3, from: "test1", to: "myname", data: "333" }
       ]
     },
     currentMessage: []
@@ -14,13 +19,27 @@ function messageReducer(
   action
 ) {
   switch (action.type) {
-    case GET_MSGS:
-      return { ...state, currentSession: action.payload.currentSession };
     case SEND_TEXT_MSG:
-      return { ...state, roster: [...action.payload.roster] };
+      return {
+        ...state,
+        messageList: fn1(
+          action.payload.id,
+          action.payload.from,
+          action.payload.to,
+          action.payload.data,
+          state.messageList
+        )
+      };
     default:
       return state;
   }
 }
 
 export default messageReducer;
+
+function fn1(id, from, to, data, messageList) {
+  let list = messageList[to] || [];
+  list.push({ id, from, to, data });
+  messageList[to] = [...list];
+  return { ...messageList };
+}

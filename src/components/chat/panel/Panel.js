@@ -2,24 +2,36 @@ import React, { Component } from "react";
 import "./panel.scss";
 import { connect } from "react-redux";
 import Tooltip from "../../tooltip/Tooltip";
+import { SEND_TEXT_MSG } from "../../../data/actions/actionTypes";
+import { getToken } from "../../../data/token";
 
 class Panel extends Component {
   sendMessage = () => {
-    let id = conn.getUniqueId();
-    let msg = new WebIM.message("txt", id);
-    msg.set({
-      msg: this.refs.inputMessage.value.trim(),
-      to: this.props.currentSession,
-      roomType: false,
-      success: () => {
-        this.refs.inputMessage.value = "";
-      },
-      fail: () => {
-        Tooltip.show({ content: "消息发送失败" });
-      }
-    });
-    msg.body.chatType = "singleChat";
-    conn.send(msg.body);
+    let token = getToken();
+    let from = token ? token.user.username : "未登录";
+    if (this.refs.inputMessage.value.trim()) {
+      let id = conn.getUniqueId();
+      let msg = new WebIM.message("txt", id);
+      msg.set({
+        msg: this.refs.inputMessage.value.trim(),
+        to: this.props.currentSession,
+        roomType: false,
+        success: (id, serverMsgId) => {
+          this.props.saveSentMessage2MessageList(
+            serverMsgId,
+            from,
+            this.props.currentSession,
+            this.refs.inputMessage.value.trim()
+          );
+          this.refs.inputMessage.value = "";
+        },
+        fail: () => {
+          Tooltip.show({ content: "消息发送失败" });
+        }
+      });
+      msg.body.chatType = "singleChat";
+      conn.send(msg.body);
+    }
   };
   sendMessage2 = e => {
     if (e.keyCode === 13) {
@@ -45,7 +57,7 @@ class Panel extends Component {
                         );
                       }
                     )
-                    : null}
+                  : null}
               </div>
             </div>
             <div className="messageSender">
@@ -76,7 +88,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    saveSentMessage2MessageList: (id, from, to, data) => {
+      dispatch({ type: SEND_TEXT_MSG, payload: { id, from, to, data } });
+    }
+  };
 };
 
 export default connect(

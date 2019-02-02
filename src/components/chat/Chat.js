@@ -8,7 +8,8 @@ import { showDialog } from "../chat/dialog/Dialog";
 import { connect } from "react-redux";
 import {
   SET_ROSTER,
-  SET_CURRENT_SESSION
+  SET_CURRENT_SESSION,
+  SEND_TEXT_MSG
 } from "../../data/actions/actionTypes";
 
 class Chat extends Component {
@@ -41,10 +42,7 @@ class Chat extends Component {
         }
       },
       onTextMessage: e => {
-        console.log(e.id);
-        console.log(e.from);
-        console.log(e.to);
-        console.log(e.data);
+        this.props.saveSentMessage2MessageList(e.id, e.to, e.from, e.data);
       }
     });
     this.props.setCurrentSession(this.props.match.params.friendName);
@@ -89,6 +87,9 @@ const mapDispatchToProps = dispatch => {
         type: SET_CURRENT_SESSION,
         payload: { currentSession }
       });
+    },
+    saveSentMessage2MessageList: (id, from, to, data) => {
+      dispatch({ type: SEND_TEXT_MSG, payload: { id, from, to, data } });
     }
   };
 };
