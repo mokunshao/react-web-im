@@ -42,7 +42,7 @@ class Chat extends Component {
         }
       },
       onTextMessage: e => {
-        this.props.saveSentMessage2MessageList(e.id, e.to, e.from, e.data);
+        this.props.saveSentMessage2MessageList(e.id, e.from, e.from, e.data);
       }
     });
     this.props.setCurrentSession(this.props.match.params.friendName);

@@ -52,7 +52,7 @@ class Panel extends Component {
                       item => {
                         return (
                           <div key={item.id}>
-                            {item.from}对{item.to}说:{item.data}
+                            {item.from}说:{item.data}
                           </div>
                         );
                       }
