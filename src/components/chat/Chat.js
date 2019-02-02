@@ -39,6 +39,12 @@ class Chat extends Component {
         if (e.type === "subscribe") {
           showDialog({ type: 2, e });
         }
+      },
+      onTextMessage: e => {
+        console.log(e.id);
+        console.log(e.from);
+        console.log(e.to);
+        console.log(e.data);
       }
     });
     this.props.setCurrentSession(this.props.match.params.friendName);
@@ -49,6 +55,11 @@ class Chat extends Component {
     ) {
       this.props.setCurrentSession(this.props.match.params.friendName);
     }
+  }
+  shouldComponentUpdate(nextProps) {
+    return (
+      nextProps.match.params.friendName !== this.props.match.params.friendName
+    );
   }
   render() {
     return (

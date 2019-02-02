@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./panel.scss";
 import { connect } from "react-redux";
 import Tooltip from "../../tooltip/Tooltip";
+
 class Panel extends Component {
   sendMessage = () => {
     let id = conn.getUniqueId();
@@ -32,7 +33,21 @@ class Panel extends Component {
         content = (
           <section className="panel">
             <div className="currentSession">{this.props.currentSession}</div>
-            <div className="messageList" />
+            <div className="messageList">
+              <div className="messageListContent">
+                {this.props.messageList[this.props.currentSession]
+                  ? this.props.messageList[this.props.currentSession].map(
+                      item => {
+                        return (
+                          <div key={item.id}>
+                            {item.from}对{item.to}说:{item.data}
+                          </div>
+                        );
+                      }
+                    )
+                    : null}
+              </div>
+            </div>
             <div className="messageSender">
               <textarea
                 placeholder="请输入消息"
@@ -55,7 +70,8 @@ class Panel extends Component {
 const mapStateToProps = state => {
   return {
     currentSession: state.session.currentSession,
-    roster: state.session.roster
+    roster: state.session.roster,
+    messageList: state.message.messageList
   };
 };
 

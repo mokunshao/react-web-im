@@ -9,6 +9,7 @@
   }
   .messageList {
     flex: 3;
+    overflow: auto;
   }
   .messageSender {
     position: relative;

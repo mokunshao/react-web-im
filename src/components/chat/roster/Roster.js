@@ -31,7 +31,7 @@ class Roster extends Component {
                       </svg>
                     </div>
                     <div>
-                      <div>{item.name}</div>
+                      <div className="username">{item.name}</div>
                       <div className="preview">
                         preview11111111111111111111111
                       </div>

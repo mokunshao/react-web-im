@@ -1,6 +1,6 @@
 import { SET_CURRENT_SESSION, SET_ROSTER } from "../actions/actionTypes";
 
-export default function sessionReducer(
+function sessionReducer(
   state = {
     currentSession: null,
     roster: [
@@ -27,3 +27,5 @@ export default function sessionReducer(
       return state;
   }
 }
+
+export default sessionReducer;
