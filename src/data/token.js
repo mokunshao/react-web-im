@@ -1,6 +1,7 @@
 let token = null;
+
 export const getToken = () => {
-  return token;
+  return token;  
 };
 export const setToken = newToken => {
   token = newToken;
