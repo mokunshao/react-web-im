@@ -19,7 +19,3 @@ export const SET_CURRENT_SESSION = "set_currrnet_session";
 export const SET_ROSTER = "set_roster";
 
 export const SEND_TEXT_MSG = "send_text_msg";
-
-export const GET_MSGS = "get_msgs";
-
-export const CHANGE_MSG_STATUS = "change_msg_status";

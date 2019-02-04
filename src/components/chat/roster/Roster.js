@@ -33,7 +33,11 @@ class Roster extends Component {
                     <div>
                       <div className="username">{item.name}</div>
                       <div className="preview">
-                        preview11111111111111111111111
+                        {this.props.messageList[item.name]
+                          ? this.props.messageList[item.name][
+                              this.props.messageList[item.name].length - 1
+                            ].data
+                          : null}
                       </div>
                     </div>
                   </div>
@@ -49,7 +53,8 @@ class Roster extends Component {
 const mapStateToProps = state => {
   return {
     currentSession: state.session.currentSession,
-    roster: state.session.roster
+    roster: state.session.roster,
+    messageList: state.message.messageList
   };
 };
 
