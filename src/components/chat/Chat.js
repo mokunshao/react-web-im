@@ -16,8 +16,7 @@ class Chat extends Component {
   componentDidMount() {
     let token = getToken();
     if (!token) {
-      // 项目写好后开启
-      // this.props.history.push("/login");
+      this.props.history.push("/login");
     }
     conn.listen({
       onOpened: () => {

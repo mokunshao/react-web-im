@@ -6,6 +6,11 @@ import { SEND_TEXT_MSG } from "../../../data/actions/actionTypes";
 import { getToken } from "../../../data/token";
 
 class Panel extends Component {
+  componentDidUpdate() {
+    if (this.refs.messageList && this.refs.messageListContent) {
+      this.refs.messageList.scrollTop = this.refs.messageListContent.offsetHeight;
+    }
+  }
   sendMessage = () => {
     let token = getToken();
     let from = token ? token.user.username : "未登录";
@@ -45,8 +50,8 @@ class Panel extends Component {
         content = (
           <section className="panel">
             <div className="currentSession">{this.props.currentSession}</div>
-            <div className="messageList">
-              <div className="messageListContent">
+            <div ref="messageList" className="messageList">
+              <div ref="messageListContent" className="messageListContent">
                 {this.props.messageList[this.props.currentSession]
                   ? this.props.messageList[this.props.currentSession].map(
                       item => {

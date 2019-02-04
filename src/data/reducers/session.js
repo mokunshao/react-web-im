@@ -4,16 +4,16 @@ function sessionReducer(
   state = {
     currentSession: null,
     roster: [
-      {
-        jid: "asemoemo#chatdemoui_test1@easemob.com",
-        name: "test1",
-        subscription: "both"
-      },
-      {
-        jid: "asemoemo#chatdemoui_test1@easemob.com",
-        name: "test2",
-        subscription: "both"
-      }
+      // {
+      //   jid: "asemoemo#chatdemoui_test1@easemob.com",
+      //   name: "test1",
+      //   subscription: "both"
+      // },
+      // {
+      //   jid: "asemoemo#chatdemoui_test1@easemob.com",
+      //   name: "test2",
+      //   subscription: "both"
+      // }
     ]
   },
   action
