@@ -1,13 +1,13 @@
 {
-  "main.css": "/mokunshao/react-web-im/build/static/css/main.e0175be3.chunk.css",
-  "main.js": "/mokunshao/react-web-im/build/static/js/main.39e3efd9.chunk.js",
-  "main.js.map": "/mokunshao/react-web-im/build/static/js/main.39e3efd9.chunk.js.map",
-  "static/js/1.09145a1c.chunk.js": "/mokunshao/react-web-im/build/static/js/1.09145a1c.chunk.js",
-  "static/js/1.09145a1c.chunk.js.map": "/mokunshao/react-web-im/build/static/js/1.09145a1c.chunk.js.map",
-  "runtime~main.js": "/mokunshao/react-web-im/build/static/js/runtime~main.962caea7.js",
-  "runtime~main.js.map": "/mokunshao/react-web-im/build/static/js/runtime~main.962caea7.js.map",
-  "static/css/main.e0175be3.chunk.css.map": "/mokunshao/react-web-im/build/static/css/main.e0175be3.chunk.css.map",
-  "index.html": "/mokunshao/react-web-im/build/index.html",
-  "precache-manifest.00071bceb61ec8d2dc9e2cb583aeed50.js": "/mokunshao/react-web-im/build/precache-manifest.00071bceb61ec8d2dc9e2cb583aeed50.js",
-  "service-worker.js": "/mokunshao/react-web-im/build/service-worker.js"
+  "main.css": "/react-web-im/build/static/css/main.e0175be3.chunk.css",
+  "main.js": "/react-web-im/build/static/js/main.0ce79ed8.chunk.js",
+  "main.js.map": "/react-web-im/build/static/js/main.0ce79ed8.chunk.js.map",
+  "static/js/1.424abf3d.chunk.js": "/react-web-im/build/static/js/1.424abf3d.chunk.js",
+  "static/js/1.424abf3d.chunk.js.map": "/react-web-im/build/static/js/1.424abf3d.chunk.js.map",
+  "runtime~main.js": "/react-web-im/build/static/js/runtime~main.2171f0c4.js",
+  "runtime~main.js.map": "/react-web-im/build/static/js/runtime~main.2171f0c4.js.map",
+  "static/css/main.e0175be3.chunk.css.map": "/react-web-im/build/static/css/main.e0175be3.chunk.css.map",
+  "index.html": "/react-web-im/build/index.html",
+  "precache-manifest.99396953292b133d990c0d25231267dc.js": "/react-web-im/build/precache-manifest.99396953292b133d990c0d25231267dc.js",
+  "service-worker.js": "/react-web-im/build/service-worker.js"
 }
