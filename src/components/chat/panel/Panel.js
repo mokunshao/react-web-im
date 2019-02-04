@@ -51,8 +51,23 @@ class Panel extends Component {
                   ? this.props.messageList[this.props.currentSession].map(
                       item => {
                         return (
-                          <div key={item.id}>
-                            {item.from}说:{item.data}
+                          <div
+                            className={
+                              this.props.currentSession === item.from
+                                ? "messageItem"
+                                : "messageItem reverse"
+                            }
+                            key={item.id}
+                          >
+                            <div>
+                              <svg className="icon" aria-hidden="true">
+                                <use xlinkHref="#icon-avatar" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="messageAuthor">{item.from}</div>
+                              <div className="messageText">{item.data}</div>
+                            </div>
                           </div>
                         );
                       }
