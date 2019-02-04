@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./panel.scss";
 import { connect } from "react-redux";
 import Tooltip from "../../tooltip/Tooltip";
-import { SEND_TEXT_MSG } from "../../../data/actions/actionTypes";
+import { SAVE_MESSAGES } from "../../../data/actions/actionTypes";
 import { getToken } from "../../../data/token";
 
 class Panel extends Component {
@@ -110,7 +110,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     saveSentMessage2MessageList: (id, from, to, data) => {
-      dispatch({ type: SEND_TEXT_MSG, payload: { id, from, to, data } });
+      dispatch({ type: SAVE_MESSAGES, payload: { id, from, to, data } });
     }
   };
 };

@@ -1,4 +1,4 @@
-import { SEND_TEXT_MSG } from "../actions/actionTypes";
+import { SAVE_MESSAGES } from "../actions/actionTypes";
 
 function messageReducer(
   state = {
@@ -19,7 +19,7 @@ function messageReducer(
   action
 ) {
   switch (action.type) {
-    case SEND_TEXT_MSG:
+    case SAVE_MESSAGES:
       return {
         ...state,
         messageList: fn1(

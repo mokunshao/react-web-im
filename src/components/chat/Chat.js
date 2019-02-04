@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import {
   SET_ROSTER,
   SET_CURRENT_SESSION,
-  SEND_TEXT_MSG
+  SAVE_MESSAGES
 } from "../../data/actions/actionTypes";
 
 class Chat extends Component {
@@ -88,7 +88,7 @@ const mapDispatchToProps = dispatch => {
       });
     },
     saveSentMessage2MessageList: (id, from, to, data) => {
-      dispatch({ type: SEND_TEXT_MSG, payload: { id, from, to, data } });
+      dispatch({ type: SAVE_MESSAGES, payload: { id, from, to, data } });
     }
   };
 };
