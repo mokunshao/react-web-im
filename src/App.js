@@ -4,17 +4,20 @@ import { connect } from "react-redux";
 import SignUp from "./components/sign/SignUp";
 import Login from "./components/sign/Login";
 import Chat from "./components/chat/Chat";
-import { HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
-          <Route exact path="/" component={Login} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={SignUp} />
-          <Route paths={["/chat/:friendName", "/chat/"]} component={Chat} />
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={SignUp} />
+            <Route path={"/chat/"} component={Chat} />
+            <Route path={"/chat/:friendName"} component={Chat} />
+          </Switch>
         </div>
       </Router>
     );

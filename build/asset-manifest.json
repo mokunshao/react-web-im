@@ -1,13 +1,13 @@
 {
-  "main.css": "/react-web-im/build/static/css/main.409b2fbe.chunk.css",
-  "main.js": "/react-web-im/build/static/js/main.47c01aaf.chunk.js",
-  "main.js.map": "/react-web-im/build/static/js/main.47c01aaf.chunk.js.map",
-  "static/js/1.424abf3d.chunk.js": "/react-web-im/build/static/js/1.424abf3d.chunk.js",
-  "static/js/1.424abf3d.chunk.js.map": "/react-web-im/build/static/js/1.424abf3d.chunk.js.map",
+  "main.css": "/react-web-im/build/static/css/main.26b5905c.chunk.css",
+  "main.js": "/react-web-im/build/static/js/main.cf7b32c5.chunk.js",
+  "main.js.map": "/react-web-im/build/static/js/main.cf7b32c5.chunk.js.map",
+  "static/js/1.59520b86.chunk.js": "/react-web-im/build/static/js/1.59520b86.chunk.js",
+  "static/js/1.59520b86.chunk.js.map": "/react-web-im/build/static/js/1.59520b86.chunk.js.map",
   "runtime~main.js": "/react-web-im/build/static/js/runtime~main.2171f0c4.js",
   "runtime~main.js.map": "/react-web-im/build/static/js/runtime~main.2171f0c4.js.map",
-  "static/css/main.409b2fbe.chunk.css.map": "/react-web-im/build/static/css/main.409b2fbe.chunk.css.map",
+  "static/css/main.26b5905c.chunk.css.map": "/react-web-im/build/static/css/main.26b5905c.chunk.css.map",
   "index.html": "/react-web-im/build/index.html",
-  "precache-manifest.e140fcd8436d36ca4f48a1e6b7b22f29.js": "/react-web-im/build/precache-manifest.e140fcd8436d36ca4f48a1e6b7b22f29.js",
+  "precache-manifest.7835119faec3d6c88ad69f274f17ffbf.js": "/react-web-im/build/precache-manifest.7835119faec3d6c88ad69f274f17ffbf.js",
   "service-worker.js": "/react-web-im/build/service-worker.js"
 }
